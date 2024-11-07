@@ -3,15 +3,16 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-   const center = [56.1629, 10.2039];  // Coordinates for Aarhus, Denmark
-   
-   
+const center = [56.1629, 10.2039]; // Coordinates for Aarhus, Denmark
+
 function MapComponent() {
-    const [mushrooms, setMushrooms] = useState([]);
+  const [mushrooms, setMushrooms] = useState([]);
 
   useEffect(() => {
     // Fetching data from Firebase Realtime Database
-    fetch("https://mushroom-webapp-default-rtdb.europe-west1.firebasedatabase.app/users.json")
+    fetch(
+      "https://mushroom-webapp-default-rtdb.europe-west1.firebasedatabase.app/users.json"
+    )
       .then((response) => response.json())
       .then((data) => {
         // Transform data into an array suitable for rendering on the map
@@ -29,8 +30,8 @@ function MapComponent() {
   return (
     <MapContainer
       center={center}
-      zoom={13}
-      style={{ width: "100%", height: "55vh", position: "fixed"}}
+      zoom={10}
+      style={{ width: "100%", height: "55vh", position: "fixed" }}
     >
       {/* OpenStreetMap Tile Layer */}
       <TileLayer
@@ -48,7 +49,7 @@ function MapComponent() {
 
         return (
           <Marker key={mushroom.id} position={mushroom.coordinates} icon={icon}>
-            <Popup>{mushroom.name}</Popup>
+            <Popup>{mushroom.name}</Popup>{" "}
           </Marker>
         );
       })}

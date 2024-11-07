@@ -1,4 +1,6 @@
 /* ---------- Root Variables ---------- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 :root {
   --green: rgb(38, 76, 89);
   --dark-green: rgb(9, 47, 59);
@@ -13,7 +15,7 @@
 /* ---------- Global Styling ---------- */
 html {
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 main div {
@@ -23,7 +25,7 @@ main div {
 .map-container {
   position: relative;
   z-index: 2; /* Ensure the map stays at the bottom */
-  margin-bottom: 40px;
+  margin-bottom: 12px;
 }
 
 .content-container {
@@ -40,9 +42,9 @@ main div {
 
 body,
 html {
-  background-color: var(--light-green);
+  background-color: var(#f8ffe6);
   color: var(--text-color-dark);
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   height: 100%;
   line-height: 1.5;
@@ -56,10 +58,14 @@ h1 {
   line-height: 1.1;
 }
 
-h2,
+h2 {
+  font-weight: 200;
+  letter-spacing: -0.1px;
+}
+
 h3 {
-  font-weight: 500;
-  letter-spacing: 0.1px;
+  font-weight: 200;
+  letter-spacing: -0.1px;
 }
 
 /* ---------- Link Styling ---------- */
@@ -83,7 +89,6 @@ select {
   border: none;
   border-radius: 8px;
   padding: 1rem;
-  box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
   background-color: white;
   line-height: 1.5;
   margin: 0;
@@ -146,10 +151,10 @@ form img {
 
 form {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 2fr;
   gap: 1em;
   align-items: center;
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   padding: 1.5em;
   background-color: var(--white);
   transition: 0.5s;
@@ -173,8 +178,9 @@ form {
 }
 
 /* ---------- Navigation Styling ---------- */
+/* ---------- Navigation Styling (Updated for images) ---------- */
 nav {
-  background-color: var(--green);
+  background-color: #f8f9f7;
   display: grid;
   left: 0;
   position: fixed;
@@ -182,42 +188,57 @@ nav {
   text-align: center;
   bottom: 0;
   padding: 1em 2em;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr; /* Adjusted for more items */
   gap: 1em;
-  height: fit-content;
+  height: 64px;
   z-index: 2;
 }
 
+/* Style for the NavLink image container */
 nav a {
   display: inline-block;
-  color: var(--text-color-light);
-  text-align: center;
-  padding: 10px;
+  width: 50px; /* Adjust to the size of the icon */
+  height: 50px; /* Adjust to the size of the icon */
+  padding: 0;
   text-decoration: none;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  border: 2px solid var(--green);
-  font-weight: 500;
-  font-size: 1rem;
-  border-radius: 8px;
-  transition: 0.5s;
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth scale transition on hover */
 }
 
 nav a:hover {
-  background-color: var(--light-green);
-  color: var(--green);
+  transform: scale(1.1); /* Slight zoom effect */
 }
 
-nav a.active {
-  background-color: var(--light-green);
-  color: var(--green);
+/* Style for the image inside the NavLink */
+.nav-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Makes sure the image scales proportionally */
+  transition: opacity 0.3s ease; /* Smooth opacity transition */
+}
+
+/* Active state for the icon */
+nav a.active .nav-icon {
+  opacity: 1; /* Active image is fully visible */
+}
+
+/* ---------- Style for the Search Icon Image ---------- */
+.search-icon {
+  cursor: pointer; /* Make the image clickable */
+  width: 30px; /* Adjust the size of the image */
+  height: 30px; /* Adjust the height */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Add smooth transitions */
+}
+
+/* Active state for the search icon image */
+.search-icon.active {
+  opacity: 1; /* Ensure the active image is fully visible */
 }
 
 /* ---------- Page Styling ---------- */
 .page {
   animation: fadeIn 0.5s;
   padding: 0 2em 2em;
-  ;
 }
 
 /* ---------- Container Styling ---------- */
@@ -274,32 +295,34 @@ nav a.active {
 
 /* ---------- Post Card Styling ---------- */
 .post-card {
-  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: row; /* Align elements in a row (horizontal) */
+  align-items: center; /* Vertically center elements */
+  justify-content: flex-start; /* Align elements to the left */
+  gap: 1em; /* Space between image and text */
+  padding: 1rem, 1rem, 0.2rem, 1rem;
   background-color: var(--white);
+  border-radius: 10px;
   transition: 0.5s;
   animation: fadeIn 0.5s;
-  cursor: pointer;
-  border-radius: 10px;
 }
-
 .post-card:hover {
-  box-shadow: 0 8px 16px 0 var(--green);
+  box-shadow: 0 1px 12px 0 var(--light-grey);
 }
 
 .post-card img {
-  width: 100%;
-  height: 200px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 .post-card h2 {
-  margin: 0.5em 0 0;
+  margin: 0.5em;
 }
 
 .post-card .title {
-  margin: 0;
+  margin: 4px;
 }
 
 /* Post Page Styling */
@@ -314,7 +337,7 @@ nav a.active {
 .avatar {
   display: flex;
   align-items: center;
-  margin: 0 0 1.2em;
+  margin: 0 0 0.8em;
   text-align: left;
 }
 
@@ -329,10 +352,15 @@ nav a.active {
 }
 
 .post-card .avatar img {
-  max-width: 50px;
-  max-height: 50px;
+  max-width: 36px;
+  max-height: 36px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.mushroom-edibility {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ---------- Post Page Styling ---------- */
